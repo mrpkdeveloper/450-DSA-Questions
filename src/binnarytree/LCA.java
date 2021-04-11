@@ -160,8 +160,7 @@ public class LCA {
 			if (listleft.size() > 0) {
 				listleft.add(parent.data);
 				return listleft;
-			}
-			if (listright.size() > 0) {
+			} else if (listright.size() > 0) {
 				listright.add(parent.data);
 				return listright;
 			}

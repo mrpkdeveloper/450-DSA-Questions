@@ -1,6 +1,7 @@
 package binnarytree;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -35,11 +36,17 @@ public class maxsumnonadjacentnodes {
 				return null;
 			}
 			Node node = new Node(0, null, null);
-			node.data = Integer.parseInt(String.valueOf(s.charAt(0)));
-			if (s.length() > 1) {
+			int i = 0;
+			while (i < s.length() && s.charAt(i) != '(') {
+				i++;
+			}
+			int start = i + 1;
+			String no = s.substring(0, i);
+			node.data = Integer.parseInt(no);
+			if (i < s.length()) {
 				Stack<Character> stack = new Stack<>();
-				stack.push(s.charAt(1));
-				int i = 2;
+				stack.push(s.charAt(i));
+				i++;
 				while (!stack.isEmpty() && i < s.length()) {
 					if (s.charAt(i) == '(') {
 						stack.push(s.charAt(i));
@@ -49,8 +56,7 @@ public class maxsumnonadjacentnodes {
 					i++;
 				}
 				int end = i;
-				String leftsub = s.substring(2, end - 1);
-//				System.out.println(leftsub);
+				String leftsub = s.substring(start, end - 1);
 				node.left = inputfromstring(leftsub, node);
 				if (end + 1 < s.length() - 1) {
 					String rightsub = s.substring(end + 1, s.length() - 1);
@@ -112,38 +118,73 @@ public class maxsumnonadjacentnodes {
 
 		}
 
-		private void inorder(Node parent, ArrayList<Integer> ans) {
-			if (parent == null) {
-				return;
-			}
+		// wrong approach works only on array not on tree
+//		private void inorder(Node parent, ArrayList<Integer> ans) {
+//			if (parent == null) {
+//				return;
+//			}
+//
+//			inorder(parent.left, ans);
+//			ans.add(parent.data);
+//			inorder(parent.right, ans);
+//		}
+//
+//		public int maxsum() {
+//			return maxsum(this.root);
+//		}
 
-			inorder(parent.left, ans);
-			ans.add(parent.data);
-			inorder(parent.right, ans);
-		}
+		// greedy
+
+//		private int maxsum(Node parent) {
+//			ArrayList<Integer> ans = new ArrayList<>();
+//			inorder(parent, ans);
+//			Integer[] arr = new Integer[ans.size()];
+//			System.out.println(ans);
+//			ans.toArray(arr);
+//			int inc = 0, exc = 0, maxsum = 0;
+//			for (int i = 0; i < arr.length; i++) {
+//				int temp = inc;
+//				inc = arr[i] + exc;
+//				exc = Math.max(temp, exc);
+//				if (maxsum < Math.max(inc, exc)) {
+//					maxsum = Math.max(inc, exc);
+//				}
+//			}
+//
+//			return maxsum;
+//		}
 
 		public int maxsum() {
 			return maxsum(this.root);
 		}
 
-		// greedy
+		HashMap<Node, Integer> map = new HashMap<>();
 
 		private int maxsum(Node parent) {
-			ArrayList<Integer> ans = new ArrayList<>();
-			inorder(parent, ans);
-			Integer[] arr = new Integer[ans.size()];
-			ans.toArray(arr);
-			int inc = 0, exc = 0, maxsum = 0;
-			for (int i = 0; i < arr.length; i++) {
-				int temp = inc;
-				inc = arr[i] + exc;
-				exc = Math.max(temp, exc);
-				if (maxsum < Math.max(inc, exc)) {
-					maxsum = Math.max(inc, exc);
-				}
+			if (parent == null) {
+				return 0;
 			}
 
-			return maxsum;
+			if (map.containsKey(parent)) {
+				return map.get(parent);
+			}
+
+			int inc = parent.data;
+			if (parent.left != null) {
+				inc += maxsum(parent.left.left);
+				inc += maxsum(parent.left.right);
+			}
+			if (parent.right != null) {
+				inc += maxsum(parent.right.left);
+				inc += maxsum(parent.right.right);
+			}
+
+			int exc = maxsum(parent.left) + maxsum(parent.right);
+
+			int myans = Math.max(inc, exc);
+			map.put(parent, myans);
+			return myans;
+
 		}
 
 	}
@@ -153,7 +194,7 @@ public class maxsumnonadjacentnodes {
 		// 10 true 20 true 40 false false true 50 false false true 30 true 60 false
 		// false true 73 false false
 		maxsumnonadjacentnodes m = new maxsumnonadjacentnodes();
-		BinaryTree tree = m.new BinaryTree("1(2(1))(3(4)(5))");
+		BinaryTree tree = m.new BinaryTree("40(2(1))(3(5)(2))");
 		tree.display();
 		System.out.println();
 //		int[] in = { 1, 6, 8, 7 };

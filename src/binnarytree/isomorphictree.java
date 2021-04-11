@@ -56,11 +56,11 @@ public class isomorphictree {
 					}
 					i++;
 				}
-				int end = i;
-				String leftsub = s.substring(start, end - 1);
+				int end = i - 1;
+				String leftsub = s.substring(start, end);
 				node.left = inputfromstring(leftsub, node);
-				if (end + 1 < s.length() - 1) {
-					String rightsub = s.substring(end + 1, s.length() - 1);
+				if (end + 2 < s.length() - 1) {
+					String rightsub = s.substring(end + 2, s.length() - 1);
 					node.right = inputfromstring(rightsub, node);
 				}
 			}
@@ -125,7 +125,7 @@ public class isomorphictree {
 		// 10 true 20 true 40 false false true 50 false false true 30 true 60 false
 		// false true 73 false false
 		isomorphictree m = new isomorphictree();
-		BinaryTree tree = m.new BinaryTree("1(2)(3)");
+		BinaryTree tree = m.new BinaryTree("10(-20)");
 		BinaryTree tree2 = m.new BinaryTree("1(3)(2)");
 		tree.display();
 		System.out.println();
