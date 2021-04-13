@@ -120,18 +120,18 @@ public class deletionandfindvalue {
 		}
 
 		public void remove(int n) {
-			this.root = remove(null, this.root, n);
+			this.root = remove(this.root, n);
 		}
 
-		private Node remove(Node parent, Node node, int n) {
+		private Node remove(Node node, int n) {
 			if (node == null) {
 				return null;
 			}
 
 			if (n > node.data) {
-				node.right = remove(node, node.right, n);
+				node.right = remove(node.right, n);
 			} else if (n < node.data) {
-				node.left = remove(node, node.left, n);
+				node.left = remove(node.left, n);
 			} else {
 				if (node.left == null && node.right == null) {
 					return null;
@@ -141,7 +141,8 @@ public class deletionandfindvalue {
 					return node.right;
 				} else {
 					node.data = max(node.left);
-					node.left = remove(node, node.left, node.data);
+					node.left = remove(node.left, node.data);
+					return node;
 				}
 			}
 
