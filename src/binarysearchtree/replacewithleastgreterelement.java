@@ -2,10 +2,10 @@ package binarysearchtree;
 
 import java.util.Stack;
 
-public class median {
+public class replacewithleastgreterelement {
 	public static class BST {
 
-		private class Node {
+		private static class Node {
 			int data;
 			Node left;
 			Node right;
@@ -100,96 +100,38 @@ public class median {
 
 		}
 
-		public void morristraversalinorder() {
-			morristraversalinorder(this.root);
-		}
+		public static Node succ = null;
 
-		// o(1) space traversal
-		private void morristraversalinorder(Node root) {
-			Node current = root;
-			while (current != null) {
-				if (current.left == null) {
-//					System.out.print(current.data + " ");
-					n++;
-					current = current.right;
-				} else {
-					Node pre = current.left;
-					while (pre.right != null && pre.right != current) {
-						pre = pre.right;
-					}
-					if (pre.right == null) {
-						pre.right = current;
-						current = current.left;
-					}
-					// left is already visited remove link and visit right
-					else {
-						pre.right = null;// break the link
-//						System.out.print(current.data + " ");
-						n++;
-						current = current.right;
-					}
-				}
-
+		public static Node add(Node parent, int n) {
+			if (parent == null) {
+				return new Node(n, null, null);
 			}
-
-		}
-
-		public static int k = 0;
-		public static int n = 0;
-
-		public void findMedian(Node root) {
-			n = 0;
-			k = 0;
-			morristraversalinorder(root);
-			if (n % 2 == 0) {
-				k = n / 2;
-				System.out.println(k);
-				int a = kthsmallest(root);
-				k = (n / 2) + 1;
-				System.out.println(k);
-				int b = kthsmallest(root);
-				System.out.println(b + "------------b");
-				float ans = (float) ((float) (a + b) / 2);
-				System.out.println(ans);
+			if (n > parent.data) {
+				parent.right = add(parent.right, n);
 			} else {
-				k = (n + 1) / 2;
-				int b = kthsmallest(root);
-				System.out.println(b);
+				succ = parent;
+				parent.left = add(parent.left, n);
 			}
+
+			return parent;
 		}
 
-		public static int kthsmallest(Node root) {
-			Node current = root;
-			int ans = Integer.MIN_VALUE;
-			while (current != null) {
-				if (current.left == null) {
-					k--;
-					if (k == 0) {
-						ans = current.data;
-					}
-					current = current.right;
+		public static void replace(int[] arr) {
+			Node root = null;
+			for (int i = arr.length - 1; i >= 0; i--) {
+				root = add(root, arr[i]);
+				if (succ != null) {
+					arr[i] = succ.data;
+					succ = null;
 				} else {
-					Node pre = current.left;
-					while (pre.right != null && pre.right != current) {
-						pre = pre.right;
-					}
-					if (pre.right == null) {
-						pre.right = current;
-						current = current.left;
-					}
-					// left is already visited remove link and visit right
-					else {
-						pre.right = null;// break the link
-						k--;
-						if (k == 0) {
-							ans = current.data;
-						}
-						current = current.right;
-					}
+					arr[i] = -1;
 				}
-
 			}
-			return ans;
+
+			for (int i = 0; i < arr.length; i++) {
+				System.out.println(arr[i]);
+			}
+
 		}
 
 	}
@@ -200,16 +142,9 @@ public class median {
 //		10 6 15 3 8 11 18
 //		String s = "13(10(3(1)(6))(11()(12)))(18(15)(20))";
 //		int[] arr1 = { 1, 3, 6, 10, 11, 12, 13, 15, 18, 20 };
-//		BST tree1 = new BST(s);
+//		BST tree1 = new BST(arr1);
 //		tree1.display();
-//		System.out.println();
-//		System.out.println(tree1.kthsmallest(tree1.root));
-//		tree1.findMedian(tree1.root);
-		int a = 11;
-		int b = 12;
-		float ans = ((float) (a + b) / 2);
-		System.out.println(ans);
-
+		int[] arr = { 8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28 };
+		BST.replace(arr);
 	}
-
 }
