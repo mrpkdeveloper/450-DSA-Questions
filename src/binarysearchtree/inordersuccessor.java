@@ -230,7 +230,7 @@ public class inordersuccessor {
 				next = node;
 
 				// Finally, set the next pointer in left subtree
-				populateNext(node.left);
+				populateNext(node.left); 
 			}
 		}
 

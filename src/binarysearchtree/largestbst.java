@@ -234,7 +234,6 @@ public class largestbst {
 				mp.size = left.size + right.size + 1;
 				mp.node = root;
 			} else {
-				mp.isbst = false;
 				if (left.size > right.size) {
 					mp.size = left.size;
 					mp.node = left.node;

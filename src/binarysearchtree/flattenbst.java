@@ -5,7 +5,7 @@ import java.util.Stack;
 public class flattenbst {
 	public static class BST {
 
-		private class Node {
+		private static class Node {
 			int data;
 			Node left;
 			Node right;
@@ -101,23 +101,56 @@ public class flattenbst {
 		}
 
 		public void flattenbst() {
-			flattenbst(this.root);
+//			this.root = flattenbst(this.root);
+			flattenbstpre(this.root);
 		}
 
-		public static Node prev = null;
+		public static Node prev = new Node(-1, null, null);
 
-		private void flattenbst(Node root) {
+		// this is acc to preorder
+		private void flattenbstpre(Node root) {
 			if (root == null) {
 				return;
 			}
 
-			flattenbst(root.right);
-			flattenbst(root.left);
+			flattenbstpre(root.right);
+			flattenbstpre(root.left);
 
 			root.right = prev;
 			root.left = null;
 			prev = root;
 
+		}
+
+		// this is acc to inorder
+		private Node flattenbst(Node root) {
+			if (root == null) {
+				return root;
+			}
+			Node temp = new Node(-1, null, null);
+			prev = temp;
+
+			inorder(root);
+
+			prev.left = null;
+			prev.right = null;
+
+			// Copy the tree.
+			Node newRoot = temp.right;
+			System.out.println(newRoot.data);
+
+			return newRoot;
+		}
+
+		private void inorder(Node root) {
+			if (root == null) {
+				return;
+			}
+			inorder(root.left);
+			prev.left = null;
+			prev.right = root;
+			prev = root;
+			inorder(root.right);
 		}
 
 	}
@@ -126,7 +159,7 @@ public class flattenbst {
 		// TODO Auto-generated method stub
 //		successorandpre m = new successorandpre();
 //		int[] arr = { 1, 2 };
-		String s = "5(3(2)(4))(7(6)(8))";
+		String s = "5(3(2(1))(4))(7(6)(8))";
 //		String s = "5(3(2)(4))";
 		BST tree = new BST(s);
 		tree.display();

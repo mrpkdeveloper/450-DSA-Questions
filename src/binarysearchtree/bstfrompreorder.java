@@ -189,10 +189,11 @@ public class bstfrompreorder {
 //		successorandpre m = new successorandpre();
 //		int[] arr = { 1, 2 };
 //		int[] arr = { 10, 5, 1, 7, 40, 50 };
-		int[] arr = { 1, 3 };
+		int[] arr = { 2, 1, 3 };
 //		int[] arr = {};
 //		String s = "50(40(35)(45))(51)";
 		BST tree = new BST(arr);
+		tree.add(0);
 		tree.display();
 	}
 }
