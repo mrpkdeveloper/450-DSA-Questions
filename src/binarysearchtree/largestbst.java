@@ -2,7 +2,7 @@ package binarysearchtree;
 
 import java.util.Stack;
 
-public class isdeadend {
+public class largestbst {
 	public static class BST {
 
 		private class Node {
@@ -177,19 +177,73 @@ public class isdeadend {
 			}
 		}
 
-		public static boolean deadend(Node root, int max, int min) {
-			if (root == null) {
-				return false;
+		public class pair {
+			int size;
+			boolean isbst;
+			Node node;
+			int min;
+			int max;
+
+			pair(int size, boolean ans) {
+				this.size = size;
+				this.isbst = ans;
 			}
-			if (root.left == null && root.right == null && max - min == 2) {
+		}
+
+		boolean isbst(Node root, int min, int max) {
+			if (root == null) {
 				return true;
 			}
 
-			boolean left = deadend(root.left, root.data, min);
-			boolean right = deadend(root.right, max, root.data);
+			if (min >= root.data || max <= root.data) {
+				return false;
+			} else if (!isbst(root.left, min, root.data)) {
+				return false;
+			} else if (!isbst(root.right, root.data, max)) {
+				return false;
+			}
 
-			return left || right;
+			return true;
 
+		}
+
+		public int largestbst() {
+			pair ans = largestbst(this.root);
+//			System.out.println("Node----- " + ans.node.data);
+			return ans.size;
+		}
+
+		private pair largestbst(Node root) {
+
+			if (root == null) {
+				pair mp = new pair(0, true);
+				mp.min = Integer.MAX_VALUE;
+				mp.max = Integer.MIN_VALUE;
+				return mp;
+			}
+
+			pair left = largestbst(root.left);
+			pair right = largestbst(root.right);
+
+			pair mp = new pair(0, false);
+			mp.isbst = left.isbst && right.isbst && (root.data > left.max && root.data < right.min);
+			mp.min = Math.min(root.data, Math.min(left.min, right.min));
+			mp.max = Math.max(root.data, Math.max(left.max, right.max));
+
+			if (mp.isbst) {
+				mp.size = left.size + right.size + 1;
+				mp.node = root;
+			} else {
+				mp.isbst = false;
+				if (left.size > right.size) {
+					mp.size = left.size;
+					mp.node = left.node;
+				} else {
+					mp.size = right.size;
+					mp.node = right.node;
+				}
+			}
+			return mp;
 		}
 
 	}
@@ -199,10 +253,13 @@ public class isdeadend {
 //		successorandpre m = new successorandpre();
 //		int[] arr = { 1, 2 };
 //		int[] arr = { 10, 5, 1, 7, 40, 50 };
-		int[] arr = { 1, 3 };
+//		int[] arr = { 1, 3 };
 //		int[] arr = {};
-//		String s = "50(40(35)(45))(51)";
-		BST tree = new BST(arr);
+//		String s = "1(4(6)(8))(4)";
+		String s = "0(2(1)(3))";
+		BST tree = new BST(s);
 		tree.display();
+		System.out.println(tree.largestbst());
 	}
+
 }
