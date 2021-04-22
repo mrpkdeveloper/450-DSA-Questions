@@ -8,64 +8,43 @@ import graphs.makegraph.Graph;
 
 public class cycleindirectedgraph {
 
-	public static class pair {
-		String vname;
-		String path;
+	private static boolean isCyclicUtil(HashMap<String, HashMap<String, Integer>> vtces, String vname,
+			boolean[] visited, boolean[] recStack) {
 
-		pair(String name, String path) {
-			this.vname = name;
-			this.path = path;
-		}
+		// Mark the current node as visited and
+		// part of recursion stack
+		int i = Integer.parseInt(vname);
+		if (recStack[i])
+			return true;
+
+		if (visited[i])
+			return false;
+
+		visited[i] = true;
+		recStack[i] = true;
+		
+		HashMap<String, Integer> nbrv = vtces.get(vname);
+		ArrayList<String> nbrsvlist = new ArrayList<>(nbrv.keySet());
+
+		for (String c : nbrsvlist)
+			if (isCyclicUtil(vtces, c, visited, recStack))
+				return true;
+
+		recStack[i] = false;
+
+		return false;
 	}
 
-	public static void DFT(HashMap<String, HashMap<String, Integer>> vtces) {
-		HashMap<String, Boolean> map = new HashMap<>();
-		LinkedList<pair> stack = new LinkedList<>();
-		int[] order = new int[vtces.size()];
+	public static boolean DFT(HashMap<String, HashMap<String, Integer>> vtces) {
+		boolean[] visited = new boolean[vtces.size()];
+		boolean[] recStack = new boolean[vtces.size()];
 		ArrayList<String> nbrs = new ArrayList<>(vtces.keySet());
 		for (String string : nbrs) {
-			if (map.containsKey(string)) {
-				continue;
+			if (isCyclicUtil(vtces, string, visited, recStack)) {
+				return true;
 			}
-			String path = "";
-			stack.addFirst(new pair(string, path + string));
-			order[Integer.parseInt(string)] = 1;
-			while (!stack.isEmpty()) {
-				pair rv = stack.removeFirst();
-				order[Integer.parseInt(rv.vname)] = 0;
-				if (map.containsKey(rv.vname)) {
-					System.out.println("cycle present2");
-					continue;
-				}
-
-				if (order[Integer.parseInt(rv.vname)] == 1) {
-					System.out.println("cycle");
-				}
-
-				map.put(rv.vname, true);
-
-//				System.out.println(map);
-
-				System.out.println(rv.vname + " via " + rv.path);
-
-				HashMap<String, Integer> nbrv = vtces.get(rv.vname);
-				ArrayList<String> nbrsvlist = new ArrayList<>(nbrv.keySet());
-				for (String string1 : nbrsvlist) {
-//					if (!map.containsKey(string1)) {
-					stack.addFirst(new pair(string1, rv.path + string1));
-					order[Integer.parseInt(rv.vname)] = 1;
-//					}
-				}
-
-				order[Integer.parseInt(rv.vname)] = 0;
-
-			}
-
 		}
-
-		for (int i = 0; i < order.length; i++) {
-			System.out.println(order[i]);
-		}
+		return false;
 	}
 
 	public static void main(String[] args) {
@@ -75,27 +54,28 @@ public class cycleindirectedgraph {
 		graph.addvertex("1");
 		graph.addvertex("2");
 		graph.addvertex("3");
-//		graph.addvertex("4");
-//		graph.addvertex("5");
-//		graph.addvertex("6");
+		graph.addvertex("4");
+		graph.addvertex("5");
+		graph.addvertex("6");
 //		graph.addvertex("7");
 //		graph.addvertex("8");
 
 		graph.addedge("0", "3", 1);
-		graph.addedge("1", "0", 1);
+		graph.addedge("0", "1", 1);
 		graph.addedge("3", "2", 1);
 		graph.addedge("2", "1", 1);
-//		graph.addedge("2", "4", 1);
-//		graph.addedge("4", "0", 1);
-//		graph.addedge("3", "4", 1);
+
+		graph.addedge("4", "5", 1);
+		graph.addedge("5", "6", 1);
+		graph.addedge("6", "4", 1);
 //		graph.addedge("3", "5", 1);
 //		graph.addedge("4", "7", 1);
 //		graph.addedge("5", "7", 1);
 
 		graph.diplay();
 //		graph.bfs("A", "E");
-		System.out.println();
-		DFT(graph.vtces);
+		System.out.println(DFT(graph.vtces));
+
 	}
 
 }
