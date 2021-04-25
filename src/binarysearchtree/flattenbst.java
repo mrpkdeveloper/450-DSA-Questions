@@ -101,8 +101,8 @@ public class flattenbst {
 		}
 
 		public void flattenbst() {
-//			this.root = flattenbst(this.root);
-			flattenbstpre(this.root);
+			this.root = flattenbst(this.root);
+//			flattenbstpre(this.root);
 		}
 
 		public static Node prev = new Node(-1, null, null);
