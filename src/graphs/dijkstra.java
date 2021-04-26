@@ -57,23 +57,23 @@ public class dijkstra {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Graph graph = new Graph();
-//		graph.addvertex("0");
-//		graph.addvertex("1");
-//		graph.addvertex("2");
-//		graph.addvertex("3");
+		graph.addvertex("0");
+		graph.addvertex("1");
+		graph.addvertex("2");
+		graph.addvertex("3");
 		graph.addvertex("4");
 		graph.addvertex("5");
 		graph.addvertex("6");
 
-//		graph.addedge("0", "3", 1);
-//		graph.addedge("0", "1", 1);
-//		graph.addedge("3", "2", 1);
-//		graph.addedge("2", "1", 1);
+		graph.addedge("0", "1", 10);
+		graph.addedge("1", "2", 10);
+		graph.addedge("3", "0", 25);
+		graph.addedge("2", "3", 10);
 
-		graph.addedge("4", "5", 1);
-		graph.addedge("5", "6", 1);
-		graph.addedge("6", "4", 1);
-		graph.addedge("4", "6", 10);
+		graph.addedge("4", "3", 2);
+		graph.addedge("5", "4", 3);
+		graph.addedge("6", "4", 8);
+		graph.addedge("5", "6", 3);
 
 		graph.diplay();
 		dijkstra(graph.vtces);
