@@ -2,33 +2,50 @@ package graphs;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class journeytomoon {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		0 1
-//		2 3
-//		0 4
+//		10 7
+//		0 2
+//		1 8
+//		1 4
+//		2 8
+//		2 6
+//		3 5
+//		6 9
 
-		ArrayList<Integer> a = new ArrayList<Integer>();
-		ArrayList<Integer> b = new ArrayList<Integer>();
-		ArrayList<Integer> c = new ArrayList<Integer>();
-		a.add(0);
-		a.add(1);
-		b.add(2);
-		b.add(3);
-		c.add(0);
-		c.add(4);
+// test case 2		
+//		100000 2
+//		1 2
+//		3 4		
+
+//		output
+//		4999949998
+
+		Scanner scn = new Scanner(System.in);
+		long n = scn.nextLong();
+		int p = scn.nextInt();
 		ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-		list.add(a);
-		list.add(b);
-		list.add(c);
-		System.out.println(journeyToMoon(5, list));
+		while (p > 0) {
+			ArrayList<Integer> a = new ArrayList<Integer>();
+			int u = scn.nextInt();
+			int v = scn.nextInt();
+			a.add(u);
+			a.add(v);
+			list.add(a);
+			p--;
+		}
+
+		System.out.println(journeyToMoon(n, list));
 
 	}
 
-	public static int journeyToMoon(int n, ArrayList<ArrayList<Integer>> list) {
+//	public static int c = 0;
+
+	public static long journeyToMoon(long n, ArrayList<ArrayList<Integer>> list) {
 		ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 		for (int i = 0; i < n; i++) {
 			ArrayList<Integer> nbr = new ArrayList<>();
@@ -37,49 +54,60 @@ public class journeytomoon {
 
 		for (int i = 0; i < list.size(); i++) {
 			ArrayList<Integer> edge = list.get(i);
-//			System.out.println(edge);
 			int u = edge.get(0);
 			int v = edge.get(1);
 			adj.get(u).add(v);
 			adj.get(v).add(u);
 		}
 
-		System.out.println();
-
-//		for (int i = 0; i < adj.size(); i++) {
-//			System.out.println(adj.get(i));
-//		}
-
 		HashSet<Integer> map = new HashSet<>();
 		ArrayList<Integer> componentsize = new ArrayList<>();
 		for (int i = 0; i < n; i++) {
 			if (!map.contains(i)) {
 				int c = 0;
-				int a = dfs(adj, map, i, c);
-				componentsize.add(a);
+				c = dfs(adj, map, i);
+				componentsize.add(c);
 			}
 		}
 
-		System.out.println(componentsize);
-		int totalpairs = (n * (n - 1)) / 2;
+//		System.out.println(componentsize);
+
+		long totalpairs = ((n * (n - 1)) / 2);
+		System.out.println(totalpairs);
 		for (int i = 0; i < componentsize.size(); i++) {
-			int x = componentsize.get(i);
+			long x = componentsize.get(i);
 			totalpairs = totalpairs - (x * (x - 1)) / 2;
 		}
 		return totalpairs;
 	}
 
-	public static int dfs(ArrayList<ArrayList<Integer>> list, HashSet<Integer> map, int src, int c) {
+//	public static void dfs(ArrayList<ArrayList<Integer>> list, HashSet<Integer> map, int src) {
 //		if (map.contains(src)) {
-//			return 0;
+//			return;
 //		}
+//		map.add(src);
+//		c = c + 1;
+//		ArrayList<Integer> nbr = list.get(src);
+//		for (int i = 0; i < nbr.size(); i++) {
+//			int a = nbr.get(i);
+//			if (!map.contains(a)) {
+////				System.out.println(i);
+//				dfs(list, map, a);
+//			}
+//		}
+//	}
+
+	public static int dfs(ArrayList<ArrayList<Integer>> list, HashSet<Integer> map, int src) {
+		if (map.contains(src)) {
+			return 0;
+		}
 		map.add(src);
 		ArrayList<Integer> nbr = list.get(src);
-		System.out.println(nbr);
 		int c = 1;
-		for (int i = 0; i < list.size(); i++) {
-			if (!map.contains(i)) {
-				c += dfs(list, map, i);
+		for (int i = 0; i < nbr.size(); i++) {
+			int a = nbr.get(i);
+			if (!map.contains(a)) {
+				c += dfs(list, map, a);
 			}
 		}
 		return c;
