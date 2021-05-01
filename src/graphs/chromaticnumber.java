@@ -24,6 +24,7 @@ public class chromaticnumber {
 		graph.addedge("4", "1", 1);
 		graph.addedge("4", "0", 1);
 
+		graph.diplay();
 		cn(graph.vtces);
 
 	}

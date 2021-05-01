@@ -35,7 +35,7 @@ public class makegraph {
 			}
 			nbr1.put(vname2, cost);
 			// now become undirected
-//			nbr2.put(vname1, cost);
+			nbr2.put(vname1, cost);
 		}
 
 		public boolean containsedge(String v1, String v2) {
