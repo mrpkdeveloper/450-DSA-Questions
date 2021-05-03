@@ -106,7 +106,7 @@ public class cheapestflights {
 		while (!queue.isEmpty()) {
 			pair rv = queue.remove();
 			if (rv.vname == dest) {
-//				System.out.println(rv.path + "   @ " + rv.cost);
+				System.out.println(rv.path + "   @ " + rv.cost);
 				return rv.cost;
 			}
 			if (rv.stop > k) {

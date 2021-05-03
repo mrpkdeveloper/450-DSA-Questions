@@ -36,7 +36,7 @@ public class bridgeinagraph {
 		lt[src] = t;
 		int[] nbr = adj[src];
 		for (int i = 0; i < nbr.length; i++) {
-			if (nbr[i] == 1 && vis[i] == 0) {
+			if (nbr[i] == 1 && vis[i] == 0) {  
 				par[i] = src;
 				dfs(adj, vis, par, rt, lt, i, t + 1);
 				lt[src] = Math.min(lt[src], lt[i]);

@@ -4,9 +4,9 @@ public class sort012 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		int[] arr = { 0, 1, 0, 2, 1, 2, 0 };
-		int[] arr = { 0, 1, 1, 1, 1, 0 };
-		threewaypartition(arr, 0, arr.length - 1, 1);
+		int[] arr = { 0, 1, 0, 2, 1, 2, 0 };
+//		int[] arr = { 0, 1, 1, 1, 1, 0 };
+		threewaypartition(arr, 0, arr.length - 1);
 //		countmethod(arr);
 		for (int i = 0; i < arr.length; i++) {
 			System.out.println(arr[i]);
@@ -19,7 +19,7 @@ public class sort012 {
 	// lo - mid-1 =1
 	// mid - hi =unknown
 	// hi+1 - end -> 2
-	public static void threewaypartition(int[] arr, int start, int end, int pivot) {
+	public static void threewaypartition(int[] arr, int start, int end) {
 		int lo = 0, mid = 0, hi = end;
 		while (mid <= hi) {
 			if (arr[mid] == 1) {
@@ -71,7 +71,6 @@ public class sort012 {
 			i++;
 			c2--;
 		}
-
 	}
 
 }
