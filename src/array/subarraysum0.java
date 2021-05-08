@@ -27,7 +27,6 @@ public class subarraysum0 {
 			if (temp.contains(sum)) {
 				return true;
 			}
-
 		}
 		return false;
 

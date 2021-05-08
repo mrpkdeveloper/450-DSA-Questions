@@ -25,11 +25,12 @@ public class minheap {
 		heap.set(ci, temp);
 	}
 
-	public void remove() {
+	public int remove() {
 		int li = heap.size() - 1;
 		swap(0, li);
-		System.out.println(heap.remove(li));
+		int ans = heap.remove(li);
 		downheapify(0);
+		return ans;
 	}
 
 	private void downheapify(int pi) {

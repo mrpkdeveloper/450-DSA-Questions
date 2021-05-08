@@ -7,10 +7,10 @@ public class treefromstring {
 
 	public class BinaryTree {
 
-		private class Node {
-			int data;
-			Node left;
-			Node right;
+		public class Node {
+			public int data;
+			public Node left;
+			public Node right;
 
 			Node(int data, Node left, Node right) {
 				this.data = data;
@@ -21,7 +21,7 @@ public class treefromstring {
 
 		}
 
-		private Node root = null;
+		public Node root = null;
 		private int size = 0;
 
 		BinaryTree() {
@@ -30,7 +30,7 @@ public class treefromstring {
 
 		}
 
-		BinaryTree(String s) {
+		public BinaryTree(String s) {
 			Scanner scn = new Scanner(System.in);
 			this.root = inputfromstring(s, null);
 
