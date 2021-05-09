@@ -6,19 +6,20 @@ public class kthlargestcontisubarraysum {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		int a[] = { 20, -5, -1 };
-		int a[] = { 10, -10, 20, -40 };
+		int a[] = { 20, -5, -1 };
+//		int a[] = { 10, -10, 20, -40 };
 		subarray(a, 1);
 	}
 
+	// O(n2logk)
 	public static void subarray(int[] arr, int k) {
 		int c = 0;
 		int[] presum = new int[arr.length + 1];
 		presum[1] = arr[0];
-//		System.out.println(presum[1]);
+		System.out.println(presum[1]);
 		for (int i = 2; i <= arr.length; i++) {
 			presum[i] = presum[i - 1] + arr[i - 1];
-//			System.out.println(presum[i]);
+			System.out.println(presum[i]);
 		}
 
 //		System.out.println();
@@ -35,6 +36,7 @@ public class kthlargestcontisubarraysum {
 
 			}
 		}
+		System.out.println();
 		System.out.println(heap.remove());
 	}
 
