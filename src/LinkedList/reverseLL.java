@@ -7,11 +7,6 @@ public class reverseLL {
 		ListNode next;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 	// iteratively
 	public ListNode reverseList(ListNode head) {
 		if (head == null) {
