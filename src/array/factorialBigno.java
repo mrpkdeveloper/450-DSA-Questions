@@ -4,7 +4,7 @@ public class factorialBigno {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		fact(50);
+		fact(5);
 
 	}
 
@@ -30,5 +30,4 @@ public class factorialBigno {
 			System.out.print(arr[i]);
 		}
 	}
-
 }

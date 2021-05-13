@@ -25,6 +25,7 @@ public class mergesort {
 		return nn;
 	}
 
+	// using n extra space
 	static Node merge(Node head1, Node head2) {
 		Node temp1 = head1;
 		Node temp2 = head2;
@@ -58,6 +59,37 @@ public class mergesort {
 			}
 		}
 		return newhead;
+
+	}
+
+	// no extra space
+	static Node mergenospace(Node head1, Node head2) {
+		Node temp1 = head1;
+		Node temp2 = head2;
+		Node newhead = new Node(-1);
+		Node temp3 = newhead;
+
+		while (temp1 != null && temp2 != null) {
+			if (temp1.data < temp2.data) {
+				temp3.next = temp1;
+				temp1 = temp1.next;
+			} else {
+				temp3.next = temp2;
+				temp2 = temp2.next;
+			}
+			temp3 = temp3.next;
+		}
+
+		if (temp1 == null) {
+			if (temp2 != null) {
+				temp3.next = temp2;
+			}
+		} else if (temp2 == null) {
+			if (temp1 != null) {
+				temp3.next = temp1;
+			}
+		}
+		return newhead.next;
 
 	}
 
