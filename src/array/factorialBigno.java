@@ -24,8 +24,8 @@ public class factorialBigno {
 				carry = carry / 10;
 				nod++;
 			}
-		}
-
+		} 
+		
 		for (int i = nod - 1; i >= 0; i--) {
 			System.out.print(arr[i]);
 		}

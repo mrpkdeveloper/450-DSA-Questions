@@ -12,62 +12,27 @@ public class add2number {
 	}
 
 	static Node addTwoLists(Node f, Node s) {
-		Node newhead = new Node(0);
+		Node newhead = new Node(-1);
 		f = reverse(f);
 		s = reverse(s);
 		Node temp1 = f;
 		Node temp2 = s;
 		Node temp3 = newhead;
 		int c = 0;
-		while (temp1 != null && temp2 != null) {
-			int a = temp1.data + temp2.data + c;
+		while (temp1 != null || temp2 != null || c != 0) {
+			int a = (temp1 != null ? temp1.data : 0) + (temp2 != null ? temp2.data : 0) + c;
 			c = a / 10;
 			a = a % 10;
-			temp3.data = a;
-			Node nn = new Node(0);
+			Node nn = new Node(a);
 			temp3.next = nn;
 			temp3 = nn;
-			temp1 = temp1.next;
-			temp2 = temp2.next;
-		}
-
-		if (temp1 == null) {
-			while (temp2 != null) {
-				int a = temp2.data + c;
-				c = a / 10;
-				a = a % 10;
-				temp3.data = a;
-				Node nn = new Node(0);
-				temp3.next = nn;
-				temp3 = nn;
-				temp2 = temp2.next;
-			}
-		} else {
-			while (temp1 != null) {
-				int a = temp1.data + c;
-				c = a / 10;
-				a = a % 10;
-				temp3.data = a;
-				Node nn = new Node(0);
-				temp3.next = nn;
-				temp3 = nn;
+			if (temp1 != null)
 				temp1 = temp1.next;
-			}
+			if (temp2 != null)
+				temp2 = temp2.next;
 		}
 
-		while (c != 0) {
-			temp3.data = c % 10;
-			c = c / 10;
-			Node nn = new Node(0);
-			temp3.next = nn;
-			temp3 = nn;
-		}
-		newhead = reverse(newhead);
-		temp3 = newhead;
-		newhead = newhead.next;
-		temp3.next = null;
-		temp3 = null;
-		return newhead;
+		return reverse(newhead.next);
 	}
 
 	static Node reverse(Node head) {
