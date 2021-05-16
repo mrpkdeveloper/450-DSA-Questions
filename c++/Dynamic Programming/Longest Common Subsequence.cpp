@@ -39,5 +39,7 @@ s1= "abc" ,s2= "abd"
                 }
             }
         }
+        // return LCS of first x characters of s1 and 
+        // first y characters of s2
         return dp[x][y];
     }
