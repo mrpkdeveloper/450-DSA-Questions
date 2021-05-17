@@ -1,6 +1,6 @@
 
 // One Line Recurrence->
-// dp[i][j]=((s[i-1]!=t[j-1])?(min(dp[i][j-1],dp[i-1][j],dp[i-1][j-1])):(dp[i-1][j-1]));
+// dp[i][j]=((s[i-1]!=t[j-1])?(min(dp[i][j-1],dp[i-1][j],dp[i-1][j-1]))+1:(dp[i-1][j-1]));
 
 
 int editDistance(string s, string t) {
@@ -35,6 +35,9 @@ int editDistance(string s, string t) {
                 }
             }
         }
-        return dp[rows][cols];   
+
+        // return minimum edit distance for first rows(=s.length) characters of s and
+        // first cols characters of t;
+        return dp[rows][cols];
         
     }
