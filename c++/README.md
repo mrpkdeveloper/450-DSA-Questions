@@ -29,4 +29,4 @@ Q. No. | Description | Solution | Topic
 Q. No. | Description | Solution | Topic
 ------ | ----------- | -------- | -----
 1 | Edit distance | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/Dynamic%20Programming/Edit%20Distance.cpp) | `Dynamic Programming`
-1 | Longest Common Subsequence | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/Dynamic%20Programming/Longest%20Common%20Subsequence.cpp) | `Dynamic Programming`
+2 | Longest Common Subsequence | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/Dynamic%20Programming/Longest%20Common%20Subsequence.cpp) | `Dynamic Programming`
