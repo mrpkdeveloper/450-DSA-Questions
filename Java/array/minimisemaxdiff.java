@@ -10,10 +10,10 @@ public class minimisemaxdiff {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = { 2, 6, 3, 4, 7, 2, 10, 3, 2, 1 };
-//		int[] arr = { 3, 9, 12, 16, 20 };
-//		minimise(arr, 5, arr.length);
-		System.out.println(getMinDiff(arr, arr.length, 5));
+//		int[] arr = { 2, 6, 3, 4, 7, 2, 10, 3, 2, 1 };
+		int[] arr = { 6, 1, 9, 1, 1, 7, 9, 5, 2, 10 };
+		minimise(arr, 4, arr.length);
+		System.out.println(getMinDiff(arr, arr.length, 4));
 
 	}
 
@@ -24,6 +24,7 @@ public class minimisemaxdiff {
 
 	}
 
+	// aproach -1
 	public static void minimise(int[] arr, int k, int n) {
 		ArrayList<pair> list = new ArrayList<>();
 		int[] visited = new int[n];
@@ -91,6 +92,7 @@ public class minimisemaxdiff {
 
 	}
 
+	// this approach fails for some test cases
 	static int getMinDiff(int arr[], int n, int k) {
 		if (n == 1)
 			return 0;
@@ -123,8 +125,8 @@ public class minimisemaxdiff {
 				big = add;
 		}
 
-		System.out.println(big);
-		System.out.println(small);
+//		System.out.println(big);
+//		System.out.println(small);
 		return Math.min(ans, big - small);
 	}
 
