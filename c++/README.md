@@ -44,3 +44,9 @@ Q. No. | Description | Solution | Topic
 Q. No. | Description | Solution | Topic
 ------ | ----------- | -------- | -----
 1 | Power of 2 | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/bit%20manipulation/Power%20of%202.cpp) | `Bit manipulation`
+
+
+Q. No. | Description | Solution | Topic
+------ | ----------- | -------- | -----
+1 | Kth largest and smallest in unsorted array | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/Heap/Kth%20smallest%20and%20largest%20in%20an%20unsorted%20array.cpp) | `Heap`
+2 | Connect n ropes with minimum cost | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/Heap/Connect%20n%20ropes%20with%20minimum%20cost.cpp) | `Heap`
