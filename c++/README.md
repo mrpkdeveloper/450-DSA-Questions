@@ -9,6 +9,7 @@ Q. No. | Description | Solution | Topic
 5 | Best time to buy and sell stock | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/array/Best%20Time%20to%20Buy%20and%20Sell%20Stock.cpp) | `Array`
 6 | Find duplicate number | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/array/Find%20the%20Duplicate%20Number(%20through%20Binary%20search).cpp) | `Array`
 7 | Kth smallest element | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/array/Kth%20smallest%20element.cpp) | `Array`
+8 | Find Union and Intersection of two sorted arrays | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/c%2B%2B/array/union%20and%20intersection%20of%20two%20sorted%20arrays.cpp) | `Array`
 
 
 
