@@ -43,3 +43,5 @@ s1= "abc" ,s2= "abd"
         // first y characters of s2
         return dp[x][y];
     }
+
+// --> time complexity O(|s1|*|s2|)  space complexity O(|s1|*|s2|)

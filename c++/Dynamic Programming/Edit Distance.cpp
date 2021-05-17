@@ -41,3 +41,5 @@ int editDistance(string s, string t) {
         return dp[rows][cols];
         
     }
+
+// --> time complexity O(|s|*|t|)  space complexity O(|s|*|t|)
