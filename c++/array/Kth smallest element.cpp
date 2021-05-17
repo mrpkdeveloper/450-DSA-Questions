@@ -18,9 +18,49 @@ array is 7.
 // l : starting index of the array i.e 0
 // r : ending index of the array i.e size-1
 // k : find kth smallest element and return using this function
-int kthSmallest(int arr[], int l, int r, int k) {
-    //code here
-       sort(arr,arr+r+1);
-       
-       return arr[k-1];
+#include<bits/stdc++.h>
+using namespace std;
+void swap(int *a,int *b)
+{
+    int t=*a;
+        *a=*b;
+        *b=t;
+}
+int partition(int ar[],int low,int high)
+{
+    int pivot,i;
+    pivot=ar[high];
+    i=low-1;
+    for(int j=low;j<high;j++)
+    {
+        if(ar[j]<pivot)
+          {
+            i++;
+            swap(&ar[i],&ar[j]);
+          }
+    }
+    swap(&ar[i+1],&ar[high]);
+    return(i+1);
+}
+int quicksort(int ar[],int low,int high)
+{
+  if(low<high)
+  {
+        int pi;
+        pi=partition(ar,low,high);
+        quicksort(ar,low,pi-1);
+        quicksort(ar,pi+1,high);
+  }
+}
+int main()
+{
+  int limit,k;
+  cin>>limit;
+  int ar[limit];
+  for(int i=0;i<limit;i++)
+    cin>>ar[i];
+  cin>>k;
+  quicksort(ar,0,limit-1);
+  cout<<ar[k-1];
+  return 0;
 }
