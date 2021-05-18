@@ -30,7 +30,7 @@
             for(int j=1;j<=n;j++)
             {
                 // take that coin atleast once required money reduce to j-S[i-1]
-                // j-S[i] can give negative values also
+                // j-S[i-1] can give negative values also
                 // when money is less and coin value is large then we can not take coin
                 long long int take=((j-S[i-1])>=0)?(dp[i][j-S[i-1]]):0;
 
@@ -43,3 +43,5 @@
         }
         return dp[m][n];   // count to make n money by using first m coins
     }
+
+// --> time complexity O(m*n)  space complexity O(m*n)
