@@ -2,7 +2,7 @@ package heap;
 
 import java.util.LinkedList;
 
-public class maxofsubarray {
+public class maxofsubarrayinwindow {
 
 	public static void main(String[] args) {
 		int arr[] = { 1, 2, 3, 8, 4, 5, 2, 3, 6 };
