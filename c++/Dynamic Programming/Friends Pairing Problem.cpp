@@ -42,6 +42,11 @@ method->2  time complexity-> O(N)  space complexity-> O(1)
         for(int i=3;i<=n;i++)
         {
             c=(b%1000000007+((i-1)*a)%1000000007)%1000000007;
+            // using modulo property 
+            //   (a+b)%mod=((a%mod)+(b%mod))%mod
+            //   (a*b)%mod=((a%mod)*(b%mod))%mod
+
+            
             a=b;  // change values for next iteration
             b=c;
         }
