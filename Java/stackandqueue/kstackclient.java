@@ -13,6 +13,8 @@ public class kstackclient {
 		st.push(2, 1);
 		st.push(2, 2);
 
+		st.display(0);
+		
 		st.push(3, 0);
 		st.push(3, 1);
 		st.push(3, 2);
