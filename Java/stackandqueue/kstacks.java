@@ -1,4 +1,4 @@
-package stackandqueue;
+  package stackandqueue;
 
 public class kstacks {
 
