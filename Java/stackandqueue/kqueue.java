@@ -55,7 +55,7 @@ public class kqueue {
 			// Update next of rear and then rear for queue number 'j'
 			next[rear[qn]] = free;
 			rear[qn] = free;
-		}
+		} 
 		next[free] = -1;
 
 		// Put the item in array
