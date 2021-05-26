@@ -9,7 +9,7 @@ public class findpairwithgivendiff {
 
 	}
 
-	// O(nlogn) ->time
+	// O(nlogn) -> time
 	public boolean findPair(int arr[], int size, int n) {
 		// code here.
 		Arrays.sort(arr);

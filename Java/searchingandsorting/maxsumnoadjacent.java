@@ -17,7 +17,6 @@ public class maxsumnoadjacent {
 			// if curr is excluded
 			exc = Math.max(temp, exc);
 		}
-
 		return Math.max(inc, exc);
 
 	}
