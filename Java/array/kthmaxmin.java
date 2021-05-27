@@ -1,5 +1,7 @@
 package array;
 
+import java.util.PriorityQueue;
+
 public class kthmaxmin {
 
 //use sorting or mean max heap O(nlogn)
@@ -61,6 +63,31 @@ public class kthmaxmin {
 		int p = partition(arr, start, end, arr[end]);
 		quicksort(arr, start, p - 1);
 		quicksort(arr, p + 1, end);
+	}
+
+	// this is the other efficient method using priority queue
+	// adding elements in pq. After adding Kth element, start removing 1 element
+	// from pq before adding (k+1)th element
+	// by this we will get pq containing k largest elements of array.. Then return
+	// the peek value of pq
+	// By Shubham Aggarwal @shubham242k
+	public static int KthMaximum(int[] a, int k) {
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+		for (int i = 0; i < a.length; i++) {
+			if (i < k) {
+				pq.add(a[i]);
+			} else {
+				if (a[i] > pq.peek()) {
+					pq.remove();
+					pq.add(a[i]);
+				}
+			}
+
+		}
+
+		return pq.peek();
+
 	}
 
 }

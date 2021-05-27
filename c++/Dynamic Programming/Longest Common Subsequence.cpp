@@ -6,7 +6,7 @@ s1= "abc" ,s2= "abd"
 
 
 //   One Line Recurrence-> 
-//   dp[i][j]=((s1[i-1]!=s2[j-1])?(max(dp[i-1][j],dp[i][j-1])):(dp[i][j]=dp[i-1][j-1]+1));
+//   dp[i][j]=((s1[i-1]!=s2[j-1])?(max(dp[i-1][j],dp[i][j-1])):(dp[i-1][j-1]+1));
 
 //Function to find the length of longest common subsequence in two strings.
     int lcs(int x, int y, string s1, string s2)
@@ -43,3 +43,5 @@ s1= "abc" ,s2= "abd"
         // first y characters of s2
         return dp[x][y];
     }
+
+// --> time complexity O(|s1|*|s2|)  space complexity O(|s1|*|s2|)
