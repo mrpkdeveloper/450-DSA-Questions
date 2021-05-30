@@ -37,7 +37,6 @@ public class countsubarraywithzerosum {
 		ArrayList<Integer> list = new ArrayList<>();
 		list.add(i);
 		map.put(sum, list);
-
 		while (i < n - 1) {
 			i++;
 			sum += arr[i];
