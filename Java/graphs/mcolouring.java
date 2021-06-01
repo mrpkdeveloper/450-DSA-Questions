@@ -11,7 +11,7 @@ public class mcolouring {
 	}
 
 	public static boolean graphcolouring(int[][] adj, int m, int src, int[] color) {
-// all vtces visited
+		// all vtces visited
 		if (src == adj.length) {
 			return true;
 		}
@@ -30,7 +30,7 @@ public class mcolouring {
 	}
 
 	private static boolean check(int[][] adj, int src, int col, int[] color) {
-// if adj have same color return false
+		// if adj have same color return false
 		for (int j = 0; j < color.length; j++) {
 			if (adj[src][j] == 1 && color[j] == col) {
 				return false;
