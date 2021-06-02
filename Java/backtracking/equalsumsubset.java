@@ -4,8 +4,10 @@ public class equalsumsubset {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = { 1, 5, 11, 5 };
-		System.out.println(equalPartition(arr.length, arr));
+//		int[] arr = { 1, 5, 11, 5 };
+		int[] arr = { 2, 4, 11, 10, 5 };
+//		System.out.println(equalPartition(arr.length, arr));
+		targetsubsetsum(arr, 16);
 
 	}
 
@@ -48,6 +50,36 @@ public class equalsumsubset {
 			}
 		}
 		return false;
+	}
+
+	// solving using dp
+	public static void targetsubsetsum(int[] arr, int sum) {
+
+		int[][] dp = new int[arr.length + 1][sum + 1];
+
+		for (int i = 0; i < dp.length; i++) {
+			dp[i][0] = 1;
+		}
+		dp[1][arr[0]] = 1;
+
+		for (int i = 2; i < dp.length; i++) {
+			for (int j = 0; j < dp[0].length; j++) {
+				if (dp[i - 1][j] == 1) {
+					dp[i][j] = 1;
+				} else if (arr[i - 1] <= j && dp[i - 1][j - arr[i - 1]] == 1) {
+					dp[i][j] = 1;
+				}
+			}
+		}
+
+//		System.out.println(dp[arr.length][sum]);
+		for (int i = 0; i < dp.length; i++) {
+			for (int j = 0; j < dp[0].length; j++) {
+				System.out.print(dp[i][j] + " ");
+			}
+			System.out.println();
+		}
+
 	}
 
 }
