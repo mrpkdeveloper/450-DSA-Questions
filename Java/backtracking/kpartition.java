@@ -6,8 +6,8 @@ public class kpartition {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		int[] arr = { 1, 5, 11, 5 };
-		int[] arr = { 1, 3, 5 };
+		int[] arr = { 1, 5, 11, 5 };
+//		int[] arr = { 1, 3, 5 };
 		int k = 2;
 		ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
 		for (int i = 0; i < k; i++) {
