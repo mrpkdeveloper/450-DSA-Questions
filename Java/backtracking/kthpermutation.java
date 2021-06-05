@@ -6,8 +6,8 @@ public class kthpermutation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int n = 4;
-		int k = 17;
+		int n = 3;
+		int k = 2;
 		String s = "";
 		ArrayList<Integer> arr = new ArrayList<Integer>();
 		for (int i = 1; i <= n; i++) {

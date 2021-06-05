@@ -19,7 +19,7 @@ public class combinationsum {
 		Collections.sort(arr);
 		ArrayList<ArrayList<Integer>> fans = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> ans = new ArrayList<Integer>();
-		solve2(arr, sum, fans, ans, 0);
+		solve(arr, sum, fans, ans, 0);
 		System.out.println(fans);
 
 	}
@@ -32,6 +32,7 @@ public class combinationsum {
 		}
 		if (sum == 0) {
 			fans.add(new ArrayList<Integer>(ans));
+//			fans.add(ans);
 			return;
 		}
 
