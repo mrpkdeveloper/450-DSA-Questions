@@ -7,14 +7,27 @@ public class jobsequencingproblem {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Job[] arr = new Job[4];
+		arr[0] = new Job(20, 4);
+		arr[1] = new Job(10, 1);
+		arr[2] = new Job(40, 1);
+		arr[3] = new Job(30, 1);
+
+		JobScheduling(arr, arr.length);
 
 	}
 
 	public static class Job {
-		int id, profit, deadline;
+		int profit, deadline;
+
+		Job(int p, int d) {
+			this.profit = p;
+			this.deadline = d;
+		}
 	}
 
-	int[] JobScheduling(Job arr[], int n) {
+	// O(n2) -> time
+	public static void JobScheduling(Job arr[], int n) {
 		Arrays.sort(arr, new Comparator<Job>() {
 			@Override
 			public int compare(Job a, Job b) {
@@ -22,21 +35,40 @@ public class jobsequencingproblem {
 			}
 		});
 
-		int time = 1, profit = arr[0].profit, deadline = arr[0].deadline;
-		for (int i = 1; i < arr.length; i++) {
-			if (time < arr[i].deadline) {
-				profit += arr[i].profit;
-				time++;
-				if (deadline < arr[i].deadline) {
-					deadline = arr[i].deadline;
+		int maxdeadline = 0;
+		for (int i = 0; i < arr.length; i++) {
+//			System.out.println(arr[i].profit + " - " + arr[i].deadline);
+			if (maxdeadline < arr[i].deadline) {
+				maxdeadline = arr[i].deadline;
+			}
+		}
+
+		int[] sheduler = new int[maxdeadline + 1];
+		for (int i = 0; i < sheduler.length; i++) {
+			sheduler[i] = -1;
+		}
+
+		int maxprofit = 0, c = 0;
+		for (int i = 0; i < arr.length; i++) {
+			int dead = arr[i].deadline;
+			for (int j = dead; j >= 1; j--) {
+				if (sheduler[j] == -1) {
+					c++;
+					sheduler[j] = arr[i].profit;
+					maxprofit += arr[i].profit;
+					break;
 				}
 			}
 		}
 
-		int[] ans = new int[2];
-		ans[0] = time;
-		ans[1] = profit;
-		return ans;
+//		System.out.println();
+//		for (int i = 0; i < sheduler.length; i++) {
+//			System.out.println(sheduler[i]);
+//		}
+//
+//		System.out.println();
+		System.out.println(maxprofit);
+
 	}
 
 }
