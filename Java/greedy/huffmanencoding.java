@@ -6,7 +6,6 @@ import java.util.PriorityQueue;
 public class huffmanencoding {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 //		String s = "abcdef";
 //		int f[] = { 5, 9, 12, 13, 16, 45 };
 		String s = "qwertyuiopasdfghjklzxcvbn";
@@ -31,6 +30,9 @@ public class huffmanencoding {
 		@Override
 		public int compareTo(Node o) {
 			// TODO Auto-generated method stub
+			if (this.data == o.data) {
+				return 1;
+			}
 			return this.data - o.data;
 		}
 	}
@@ -42,25 +44,30 @@ public class huffmanencoding {
 		for (int i = 0; i < s.length(); i++) {
 			heap.add(new Node(f[i], s.charAt(i)));
 		}
-
-		while (heap.size() > 0) {
-			Node rv = heap.poll();
-			System.out.println(rv.ch + " - " + rv.data);
-		}
-
-//		Node root = null;
-//		while (heap.size() > 1) {
-//			Node one = heap.remove();
-//			Node two = heap.remove();
 //
-//			Node nn = new Node(one.data + two.data, '-');
-//			nn.left = one;
-//			nn.right = two;
-//			root = nn;
-//			heap.add(nn);
+//		while (heap.size() > 0) {
+//			Node rv = heap.poll();
+//			System.out.println(rv.ch + " - " + rv.data);
 //		}
+
+		Node root = null;
+		while (heap.size() > 1) {
+			Node one = heap.remove();
+//			System.out.println();
+//			System.out.println("one " + one.ch + " - " + one.data);
+
+			Node two = heap.remove();
+
+//			System.out.println("two " + two.ch + " - " + two.data);
+
+			Node nn = new Node(one.data + two.data, '-');
+			nn.left = one;
+			nn.right = two;
+			root = nn;
+			heap.add(nn);
+		}
 		ArrayList<String> fans = new ArrayList<String>();
-//		print(root, "", fans);
+		print(root, "", fans);
 
 		return fans;
 
