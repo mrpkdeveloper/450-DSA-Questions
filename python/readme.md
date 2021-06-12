@@ -13,6 +13,6 @@ Q. No. | Description | Solution | Topic
 9 | Merge Intervals | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/Array/merge_intervals.py) | `Array`
 10 | Factorial of a number | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/Array/factorial.py) | `Array`
 56 | Reverse a String | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/String/Reverse_a_string.py) | `String`
-57 | Check whether a String is palindrome or not | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/String/Palindrome_or_not.py) | `String`
+57 | Check whether a String is palindrome or not | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/python/String/pallindromeString.py) | `String`
 58 | Find Duplicate Characters in a string | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/String/duplicates.py) | `String`
 84 | Find the first repeated word in a string | [here](https://github.com/karishmas6/450-DSA-Questions/blob/main/python/String/second_most_repeated_string.py) | `String`
