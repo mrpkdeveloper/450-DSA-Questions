@@ -7,11 +7,17 @@ public class minplatforms {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arrival[] = { 950, 1100, 940, 1500, 1800, 900 };
-		int dept[] = { 1120, 1130, 1200, 1900, 2000, 910 };
-		train[] arr = new train[6];
+//		int arrival[] = { 950, 1100, 940, 1500, 1800, 900 };
+//		int dept[] = { 1120, 1130, 1200, 1900, 2000, 910 };
+		int arrival[] = { 2200, 900, 2230 };
+		int dept[] = { 800, 2200, 2250 };
+		train[] arr = new train[2];
 		for (int i = 0; i < arr.length; i++) {
-			arr[i] = new train(arrival[i], dept[i]);
+			if (arrival[i] >= dept[i]) {
+				arr[i] = new train(1, 2);
+			} else
+				arr[i] = new train(arrival[i], dept[i]);
+
 		}
 
 		System.out.println(findPlatform(arrival, dept, dept.length));
@@ -28,12 +34,16 @@ public class minplatforms {
 
 		@Override
 		public int compareTo(train o) {
-			return this.at - o.at;
+//			return this.at - o.at;
+			if (this.at - o.at < 0) {
+				return -1;
+			} else {
+				return 1;
+			}
 		}
 	}
 
 	public static void solve(train[] arr) {
-
 		Arrays.parallelSort(arr);
 		int maxp = 1;
 		PriorityQueue<train> heap = new PriorityQueue<>();
