@@ -8,6 +8,7 @@ public class lcs {
 		String str2 = "aebd";
 		solvedp(str1, str2);
 		System.out.println(solverecursive(str1, str2));
+		solvedpopti(str1, str2);
 
 	}
 
@@ -29,6 +30,7 @@ public class lcs {
 
 	}
 
+	// O(N^2)-> time and space
 	public static void solvedp(String s1, String s2) {
 		int[][] dp = new int[s1.length() + 1][s2.length() + 1];
 		for (int i = 1; i < dp.length; i++) {
@@ -43,6 +45,23 @@ public class lcs {
 
 		System.out.println(dp[s1.length()][s2.length()]);
 
+	}
+
+	// space optimized -> O(N) space
+	public static void solvedpopti(String s1, String s2) {
+		int[][] dp = new int[2][s2.length() + 1];
+
+		for (int i = 1; i < s1.length() + 1; i++) {
+			for (int j = 1; j < dp[0].length; j++) {
+				if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+					dp[i % 2][j] = dp[(i - 1) % 2][j - 1] + 1;
+				} else {
+					dp[i % 2][j] = Math.max(dp[(i - 1) % 2][j], dp[i % 2][j - 1]);
+				}
+			}
+		}
+
+		System.out.println(dp[s1.length() % 2][s2.length()]);
 	}
 
 }

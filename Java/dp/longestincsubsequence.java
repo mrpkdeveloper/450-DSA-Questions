@@ -14,7 +14,7 @@ public class longestincsubsequence {
 		int[] dp = new int[arr.length];
 		dp[0] = 1;
 		for (int i = 1; i < dp.length; i++) {
-			int max = Integer.MIN_VALUE;
+			int max = 0;
 			for (int j = i - 1; j >= 0; j--) {
 				if (arr[i] > arr[j]) {
 					if (max < dp[j]) {
@@ -22,11 +22,7 @@ public class longestincsubsequence {
 					}
 				}
 			}
-			if (max > 0) {
-				dp[i] = max + 1;
-			} else {
-				dp[i] = 1;
-			}
+			dp[i] = max + 1;
 		}
 		int max = Integer.MIN_VALUE;
 		for (int i = 0; i < dp.length; i++) {
