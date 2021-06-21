@@ -41,34 +41,14 @@ public class countsquencewithproductK {
 
 	public static void solvedp(int[] arr, int k) {
 
-//		int[][] dp = new int[arr.length + 1][k + 1];
-//
-//		for (int i = 1; i < dp.length; i++) {
-//			for (int j = 1; j < dp[0].length; j++) {
-//				dp[i][j] = dp[i - 1][j];
-//				if (arr[i - 1] <= j && arr[i - 1] > 0) {
-//					dp[i][j] += dp[i - 1][j / arr[i - 1]] + 1;
-//				}
-//			}
-//		}
+		int[][] dp = new int[arr.length + 1][k + 1];
 
-		int n = arr.length;
-		int dp[][] = new int[k + 1][n + 1];
-
-		for (int i = 1; i <= k; i++) {
-			for (int j = 1; j <= n; j++) {
-
-				// number of subsequence using j-1 terms
-				dp[i][j] = dp[i][j - 1];
-
-				// if arr[j-1] > i it will surely make
-				// product greater thus it won't contribute
-				// then
-				if (arr[j - 1] <= i && arr[j - 1] > 0)
-
-					// number of subsequence using 1 to j-1
-					// terms and j-th term
-					dp[i][j] += dp[i / arr[j - 1]][j - 1] + 1;
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 1; j < dp[0].length; j++) {
+				dp[i][j] = dp[i - 1][j];
+				if (arr[i - 1] <= j && arr[i - 1] > 0) {
+					dp[i][j] += dp[i - 1][j / arr[i - 1]] + 1;
+				}
 			}
 		}
 
