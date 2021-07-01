@@ -4,7 +4,7 @@ public class knapsack {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int W = 4;
+		int W = 5;
 		int val[] = { 1, 2, 3 };
 		int wt[] = { 4, 5, 1 };
 
