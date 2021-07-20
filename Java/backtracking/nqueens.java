@@ -4,14 +4,14 @@ public class nqueens {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		int[][] arr = new int[4][4];
-//		print(arr, 3, 0, 0, "");
+		int[][] arr = new int[4][4];
+		print(arr, 3, 0, 0, "");
 
 		int n = 4;
 		int[] col = new int[n];
 		int[] d1 = new int[2 * n];
 		int[] d2 = new int[2 * n];
-		printopti(n, 0, "", col, d1, d2);
+//		printopti(n, 0, "", col, d1, d2);
 
 	}
 

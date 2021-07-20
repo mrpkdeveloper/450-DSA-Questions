@@ -8,10 +8,13 @@ public class kthmaxmin {
 //partition method best O(n)	
 // also known as quick select
 
+//fail for duplicates
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] arr = { 1, 8, 3, 7, 2, 6, 9, 5, 4, 21 };
-		int k = 4; // means k+1 smallest element
+		int k = 4;
+		k--;// 0 based indexing
 		// pass last element as pivot
 		int p = partition(arr, 0, arr.length - 1, arr[arr.length - 1]);
 		while (p != k) {

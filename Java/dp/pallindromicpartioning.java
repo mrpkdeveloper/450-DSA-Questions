@@ -19,7 +19,7 @@ public class pallindromicpartioning {
 		int myfans = Integer.MAX_VALUE;
 		for (int i = 0; i < s.length(); i++) {
 			String mys = s.substring(0, i + 1);
-			String ros = (i + 1) == s.length() ? "" : s.substring(i + 1);
+			String ros = s.substring(i + 1);
 			if (checkpallindrome(mys)) {
 				int myans = solverec(ros);
 				if (myfans > myans + 1) {

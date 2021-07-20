@@ -7,7 +7,7 @@ public class minimisecashflow {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[][] edges = { { 0, 1, 1000 }, { 0, 2, 2000 }, { 1, 2, 5000 } };
-		cashflow(edges, 3);
+		cashflow(edges, 8);
 
 	}
 
@@ -29,16 +29,17 @@ public class minimisecashflow {
 	}
 
 	public static void cashflow(int[][] edges, int n) {
-
-		int[] netvaluearr = new int[n];
-		for (int i = 0; i < netvaluearr.length; i++) {
-			int u = edges[i][0];
-			int v = edges[i][1];
-			int cost = edges[i][2];
-
-			netvaluearr[u] -= cost;
-			netvaluearr[v] += cost;
-		}
+//
+//		int[] netvaluearr = new int[n];
+//		for (int i = 0; i < netvaluearr.length; i++) {
+//			int u = edges[i][0];
+//			int v = edges[i][1];
+//			int cost = edges[i][2];
+//
+//			netvaluearr[u] -= cost;
+//			netvaluearr[v] += cost;
+//		}
+		int[] netvaluearr = { 300, 100, 700, 0, -100, -200, -400, -400 };
 
 		for (int i = 0; i < netvaluearr.length; i++) {
 			System.out.println(netvaluearr[i]);
@@ -56,7 +57,7 @@ public class minimisecashflow {
 			}
 		}
 
-		int[][] newedge = new int[edges.length][3];
+		int[][] newedge = new int[n][3];
 		int i = 0;
 		while (!posheap.isEmpty() && !negheap.isEmpty()) {
 
