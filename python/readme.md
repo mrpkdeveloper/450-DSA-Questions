@@ -20,3 +20,4 @@ Q. No. | Description | Solution | Topic
 57 | Check whether a String is palindrome or not | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/python/String/pallindromeString.py) | `String`
 58 | Find Duplicate Characters in a string | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/String/duplicates.py) | `String`
 84 | Find the first repeated word in a string | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/python/String/count_frequency_characters.py) | `String`
+85 | Find the second maximum element in an array | [here](https://github.com/bishtanuj/450-DSA-Questions/blob/main/python/Array/second_max_element.py)  | `Array`
