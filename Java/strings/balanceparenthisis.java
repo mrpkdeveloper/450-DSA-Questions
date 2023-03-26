@@ -2,6 +2,8 @@ package strings;
 
 import java.util.Stack;
 
+import java.util.*;
+
 public class balanceparenthisis {
 
 	public static void main(String[] args) {
@@ -10,23 +12,36 @@ public class balanceparenthisis {
 
 	}
 
-	public static boolean balanced(String s) {
-		Stack<Character> list = new Stack<Character>();
-		list.add(s.charAt(0));
-		for (int i = 1; i < s.length(); i++) {
-			if (list.empty() == false && (list.peek() == '(' && s.charAt(i) == ')'
-					|| list.peek() == '[' && s.charAt(i) == ']' || list.peek() == '{' && s.charAt(i) == '}')) {
-				list.pop();
-			} else {
-				list.add(s.charAt(i));
-			}
-		}
-
-		if (list.empty()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
+    public static boolean balanced(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == '}') {
+                if (stack.peek() == '{') {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else if (ch == ')') {
+                if (stack.peek() == '(') {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else if (ch == ']') {
+                if (stack.peek() == '(') {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else {
+                stack.push(ch);
+            }
+        }
+        if (stack.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
