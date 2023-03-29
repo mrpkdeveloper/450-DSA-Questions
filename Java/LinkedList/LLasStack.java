@@ -1,5 +1,18 @@
 package LinkedList;
+/*
+Problem statement:
+Implement a stack using a linked list. The stack should have the following operations:
 
+push: add an element to the top of the stack
+pop: remove and return the top element of the stack
+peek: return the top element of the stack without removing it
+The program defines a LLasStack class which implements the stack using a linked list. The class has a private inner Node class which represents a node in the linked list. The class has the following methods:
+
+`push(int x)`: add an element x to the top of the stack
+`peek()`: return the top element of the stack without removing it
+`pop()`: remove and return the top element of the stack
+`display()`: display the contents of the stack
+*/
 public class LLasStack {
 
 	private class Node {
