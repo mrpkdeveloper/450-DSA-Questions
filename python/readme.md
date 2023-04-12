@@ -20,5 +20,6 @@ Q. No. | Description | Solution | Topic
 56 | Reverse a String | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/String/Reverse_a_string.py) | `String`
 57 | Check whether a String is palindrome or not | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/python/String/pallindromeString.py) | `String`
 58 | Find Duplicate Characters in a string | [here](https://github.com/Anacoder1/450-DSA-Questions/blob/main/python/String/duplicates.py) | `String`
+76 | Convert a sentence into its equivalent mobile numeric keypad sequence | [here](https://github.com/Devang-C/450-DSA-Questions/blob/main/python/String/76_ConvertSentenceToNumericKeypad.py) | `String`
 84 | Find the first repeated word in a string | [here](https://github.com/mrpkdeveloper/450-DSA-Questions/blob/main/python/String/count_frequency_characters.py) | `String`
 85 | Find the second maximum element in an array | [here](https://github.com/bishtanuj/450-DSA-Questions/blob/main/python/Array/second_max_element.py)  | `Array`
